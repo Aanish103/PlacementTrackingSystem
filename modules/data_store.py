@@ -103,3 +103,8 @@ decisions = [
     {"application_id": "AP009", "decision_type": "Pending", "decision_by": "PS009", "decision_comment": "Scheduled", "decision_date": "2025-03-09"},
     {"application_id": "AP010", "decision_type": "Approved", "decision_by": "PS010", "decision_comment": "Excellent", "decision_date": "2025-03-10"},
 ]
+
+def _next_id(collection, prefix):
+    if not collection:
+        return f"{prefix}001"
+    return f"{prefix}{max(int(i[list(i.keys())[0]][2:]) for i in collection) + 1:03d}"
