@@ -114,3 +114,9 @@ def add_staff(name, email, phone, role):
     sid = _next_id(placement_staffs, "PS")
     placement_staffs.append({"staff_id": sid, "name": name, "email": email, "phone": phone, "role": role})
     return sid
+
+
+def add_school(name, location):
+    sid = _next_id(schools, "SC")
+    schools.append({"school_id": sid, "school_name": name, "location": location})
+    return sid
