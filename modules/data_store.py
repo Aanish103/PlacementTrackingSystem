@@ -108,3 +108,9 @@ def _next_id(collection, prefix):
     if not collection:
         return f"{prefix}001"
     return f"{prefix}{max(int(i[list(i.keys())[0]][2:]) for i in collection) + 1:03d}"
+
+
+def add_staff(name, email, phone, role):
+    sid = _next_id(placement_staffs, "PS")
+    placement_staffs.append({"staff_id": sid, "name": name, "email": email, "phone": phone, "role": role})
+    return sid
