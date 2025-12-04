@@ -1,5 +1,5 @@
-
-#from modules import data_store as ds
+from modules import placement_staffs
+from modules import data_store as ds
 
 def main_menu():
     while True:
@@ -18,63 +18,29 @@ def main_menu():
         print("0  Exit")
 
         choice = input("Choice: ").strip()
-       # if choice == "1":
-       #      placement_staffs_menu()
-       #  elif choice == "2":
-       #      schools_menu()
-       #  elif choice == "3":
-       #      students_menu()
-       #  elif choice == "4":
-       #      applications_menu()
-       #  elif choice == "5":
-       #      assessments_menu()
-       #  elif choice == "6":
-       #      show_apps_for_student()
-       #  elif choice == "7":
-       #      filter_students_by_year()
-       #  elif choice == "8":
-       #      filter_students_by_school()
-       #  elif choice == "9":
-       #      show_all_details()
-       #  elif choice == "10":
-       #      visits_menu()
-       #  elif choice == "11":
-       #      decisions_menu()
-       #  elif choice == "0":
-       #      print("Exiting.")
-       #      break
-       #  else:
-       #      print("Invalid choice.")
+
+        if choice == "1":
+            placement_staffs_menu()
+        elif choice == "0":
+            print("Exiting.")
+            break
+        else:
+            print("Invalid choice.")
 
 
 
 
-#def placement_staffs_menu():
+
+def placement_staffs_menu():
+    print("\nPlacement Staffs: 1 Add | 2 Update | 3 Delete | 4 Show All | 0 Back")
+    c = input("Sub choice: ").strip()
+    if c == "1":
+        placement_staffs.add_placement_staff()
 
 
-#def schools_menu():
-
-#def students_menu():
-
-
-#def applications_menu():
-
-
-#def assessments_menu():
-
-
-#def def visits_menu():
-
-#def decisions_menu():
-
-#def show_apps_for_student():
-
-#def filter_students_by_year():
-
-#def filter_students_by_school():
-
-#def show_all_details():
-
+        return
+    else:
+        print("Invalid")
 
 
 if __name__ == "__main__":
