@@ -104,12 +104,14 @@ decisions = [
     {"application_id": "AP010", "decision_type": "Approved", "decision_by": "PS010", "decision_comment": "Excellent", "decision_date": "2025-03-10"},
 ]
 
+
+#Generic Functions
 def _next_id(collection, prefix):
     if not collection:
         return f"{prefix}001"
     return f"{prefix}{max(int(i[list(i.keys())[0]][2:]) for i in collection) + 1:03d}"
 
-
+#Add Functions
 def add_staff(name, email, phone, role):
     sid = _next_id(placement_staffs, "PS")
     placement_staffs.append({"staff_id": sid, "name": name, "email": email, "phone": phone, "role": role})
@@ -135,3 +137,12 @@ def add_student(name, dob, address, qualification, year, school_id, staff_id):
         "staff_id": staff_id
     })
     return sid
+
+
+#Update
+def update_school(school_id, data):
+    for s in schools:
+        if s["school_id"] == school_id:
+            s.update(data)
+            return True
+    return False

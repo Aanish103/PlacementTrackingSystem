@@ -47,6 +47,8 @@ def schools_menu():
     c = input("Sub choice: ").strip()
     if c == "1":
         schools.add_school()
+    elif c == "2":
+        schools.update_school()
         return
     else:
         print("Invalid.")
