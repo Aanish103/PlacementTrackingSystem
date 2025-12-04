@@ -120,3 +120,18 @@ def add_school(name, location):
     sid = _next_id(schools, "SC")
     schools.append({"school_id": sid, "school_name": name, "location": location})
     return sid
+
+
+def add_student(name, dob, address, qualification, year, school_id, staff_id):
+    sid = _next_id(students, "ST")
+    students.append({
+        "student_id": sid,
+        "name": name,
+        "dob": dob,
+        "address": address,
+        "qualification": qualification,
+        "grad_year": year,
+        "school_id": school_id,
+        "staff_id": staff_id
+    })
+    return sid
