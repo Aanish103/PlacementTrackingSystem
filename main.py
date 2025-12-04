@@ -1,4 +1,4 @@
-from modules import placement_staffs
+from modules import placement_staffs, schools
 from modules import data_store as ds
 
 def main_menu():
@@ -21,6 +21,8 @@ def main_menu():
 
         if choice == "1":
             placement_staffs_menu()
+        elif choice == "2":
+            schools_menu()
         elif choice == "0":
             print("Exiting.")
             break
@@ -41,6 +43,15 @@ def placement_staffs_menu():
         return
     else:
         print("Invalid")
+
+def schools_menu():
+    print("\nSchools: 1 Add | 2 Update | 3 Delete | 4 Show All | 0 Back")
+    c = input("Sub choice: ").strip()
+    if c == "1":
+        schools.add_school()
+        return
+    else:
+        print("Invalid.")
 
 
 if __name__ == "__main__":
