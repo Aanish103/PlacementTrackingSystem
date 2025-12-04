@@ -111,6 +111,14 @@ def _next_id(collection, prefix):
         return f"{prefix}001"
     return f"{prefix}{max(int(i[list(i.keys())[0]][2:]) for i in collection) + 1:03d}"
 
+
+def get_by_id(collection, key):
+    for item in collection:
+        for k, v in item.items():
+            if k.endswith("_id") and v == key:
+                return item
+    return None
+
 #Add Functions
 def add_staff(name, email, phone, role):
     sid = _next_id(placement_staffs, "PS")
