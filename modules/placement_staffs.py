@@ -28,3 +28,11 @@ def update_placement_staff():
         print("Staff updated.")
     else:
         print("Update failed.")
+
+
+def delete_placement_staff():
+    sid = input("Enter staff_id to delete: ")
+    if ds.delete_staff(sid):
+        print("Staff deleted.")
+    else:
+        print("staff_id not found.")
