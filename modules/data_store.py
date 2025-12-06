@@ -147,6 +147,21 @@ def add_student(name, dob, address, qualification, year, school_id, staff_id):
     return sid
 
 
+def add_application(student_id, employer, role, start, end, docs):
+    aid = _next_id(applications, "AP")
+    applications.append({
+        "application_id": aid,
+        "student_id": student_id,
+        "employer": employer,
+        "role": role,
+        "start_date": start,
+        "end_date": end,
+        "documents": docs,
+        "status": "Pending"
+    })
+    return aid
+
+
 #Update
 def update_school(school_id, data):
     for s in schools:
