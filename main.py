@@ -39,6 +39,8 @@ def placement_staffs_menu():
     c = input("Sub choice: ").strip()
     if c == "1":
         placement_staffs.add_placement_staff()
+    elif c == "2":
+        placement_staffs.update_placement_staff()
         return
     else:
         print("Invalid")

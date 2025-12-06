@@ -169,3 +169,11 @@ def update_school(school_id, data):
             s.update(data)
             return True
     return False
+
+
+def update_staff(staff_id, data):
+    for s in placement_staffs:
+        if s["staff_id"] == staff_id:
+            s.update(data)
+            return True
+    return False
