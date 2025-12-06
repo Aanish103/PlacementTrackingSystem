@@ -189,13 +189,3 @@ def update_student(student_id, data):
             s.update(data)
             return True
     return False
-
-
-
-#Delete
-def delete_placement_staff():
-    sid = input("Enter staff_id to delete: ")
-    if ds.delete_staff(sid):
-        print("Staff deleted.")
-    else:
-        print("staff_id not found.")
