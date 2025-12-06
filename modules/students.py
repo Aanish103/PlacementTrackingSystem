@@ -37,3 +37,11 @@ def update_student():
         print("Student updated.")
     else:
         print("Update failed.")
+
+
+def delete_student():
+    sid = input("Enter student_id to delete: ")
+    if ds.delete_student(sid):
+        print("Student and related records deleted.")
+    else:
+        print("student_id not found.")

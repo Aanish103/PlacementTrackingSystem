@@ -204,3 +204,7 @@ def update_student(student_id, data):
 #Delete
 def delete_staff(staff_id):
     return delete_by_id(placement_staffs, staff_id)
+
+
+def delete_student(student_id):
+    return delete_by_id(students, student_id)
