@@ -84,6 +84,8 @@ def applications_menu():
     c = input("Sub choice: ").strip()
     if c == "1":
         applications.add_application()
+    elif c == "2":
+        applications.update_application()
     elif c == "0":
         return
     else:

@@ -192,6 +192,13 @@ def update_staff(staff_id, data):
     return False
 
 
+def update_application(app_id, data):
+    for a in applications:
+        if a["application_id"] == app_id:
+            a.update(data)
+            return True
+    return False
+
 
 def update_student(student_id, data):
     for s in students:
