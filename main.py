@@ -41,6 +41,7 @@ def placement_staffs_menu():
         placement_staffs.add_placement_staff()
     elif c == "2":
         placement_staffs.update_placement_staff()
+    elif c == "0":
         return
     else:
         print("Invalid")
@@ -53,6 +54,7 @@ def schools_menu():
         schools.add_school()
     elif c == "2":
         schools.update_school()
+    elif c == "0":
         return
     else:
         print("Invalid.")
@@ -63,10 +65,13 @@ def students_menu():
     c = input("Sub choice: ").strip()
     if c == "1":
         students.add_student()
+    elif c == "2":
+        students.update_student()
     elif c == "0":
         return
     else:
         print("Invalid.")
+
 
 def applications_menu():
     print("\nApplication: 1 Add | 2 Update | 3 Delete | 4 Show All | 5 Find by ID | 6 Show Full Details | 0 Back")

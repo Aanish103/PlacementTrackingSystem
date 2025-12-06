@@ -119,6 +119,9 @@ def get_by_id(collection, key):
                 return item
     return None
 
+def record_exists(collection, key):
+    return get_by_id(collection, key) is not None
+
 #Add Functions
 def add_staff(name, email, phone, role):
     sid = _next_id(placement_staffs, "PS")
@@ -174,6 +177,15 @@ def update_school(school_id, data):
 def update_staff(staff_id, data):
     for s in placement_staffs:
         if s["staff_id"] == staff_id:
+            s.update(data)
+            return True
+    return False
+
+
+
+def update_student(student_id, data):
+    for s in students:
+        if s["student_id"] == student_id:
             s.update(data)
             return True
     return False
