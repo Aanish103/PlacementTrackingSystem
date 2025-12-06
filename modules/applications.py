@@ -3,7 +3,7 @@ from modules import data_store as ds
 
 def add_application():
     student_id = input("Student ID: ")
-    if not ds.get_student(student_id):
+    if not ds.get_by_id(ds.students, student_id):
         print("student_id not found. Create student first.")
         return
     employer = input("Employer name: ")
