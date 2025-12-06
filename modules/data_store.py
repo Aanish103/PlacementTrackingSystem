@@ -208,3 +208,7 @@ def delete_staff(staff_id):
 
 def delete_student(student_id):
     return delete_by_id(students, student_id)
+
+
+def delete_school(school_id):
+    return delete_by_id(schools, school_id)
