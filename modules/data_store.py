@@ -189,3 +189,8 @@ def update_student(student_id, data):
             s.update(data)
             return True
     return False
+
+
+#Delete
+def delete_staff(staff_id):
+    return delete_by_id(placement_staffs, staff_id)
