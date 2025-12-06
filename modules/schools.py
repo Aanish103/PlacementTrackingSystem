@@ -21,3 +21,11 @@ def update_school():
         print("School updated.")
     else:
         print("Update failed.")
+
+
+def delete_school():
+    sid = input("Enter school_id: ")
+    if ds.delete_school(sid):
+        print("School deleted.")
+    else:
+        print("school_id not found.")

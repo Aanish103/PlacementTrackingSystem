@@ -56,6 +56,8 @@ def schools_menu():
         schools.add_school()
     elif c == "2":
         schools.update_school()
+    elif c == "3":
+        schools.delete_school()
     elif c == "0":
         return
     else:
