@@ -41,6 +41,8 @@ def placement_staffs_menu():
         placement_staffs.add_placement_staff()
     elif c == "2":
         placement_staffs.update_placement_staff()
+    elif c == "3":
+        placement_staffs.delete_placement_staff()
     elif c == "0":
         return
     else:
