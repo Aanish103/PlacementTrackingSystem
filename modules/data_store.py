@@ -119,6 +119,16 @@ def get_by_id(collection, key):
                 return item
     return None
 
+
+def delete_by_id(collection, key):
+    for i, item in enumerate(collection):
+        for k, v in item.items():
+            if k.endswith("_id") and v == key:
+                del collection[i]
+                return True
+    return False
+
+
 def record_exists(collection, key):
     return get_by_id(collection, key) is not None
 
