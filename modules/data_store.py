@@ -175,6 +175,18 @@ def add_application(student_id, employer, role, start, end, docs):
     return aid
 
 
+def add_assessment(app_id, assessor, score, comment):
+    aid = _next_id(assessments, "AS")
+    assessments.append({
+        "assessment_id": aid,
+        "application_id": app_id,
+        "assessor_name": assessor,
+        "score": score,
+        "comments": comment
+    })
+    return aid
+
+
 #Update
 def update_school(school_id, data):
     for s in schools:
