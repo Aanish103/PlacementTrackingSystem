@@ -86,6 +86,8 @@ def applications_menu():
         applications.add_application()
     elif c == "2":
         applications.update_application()
+    elif c == "3":
+        applications.delete_application()
     elif c == "0":
         return
     else:

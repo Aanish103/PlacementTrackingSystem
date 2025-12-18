@@ -219,3 +219,6 @@ def delete_student(student_id):
 
 def delete_school(school_id):
     return delete_by_id(schools, school_id)
+
+def delete_application(app_id):
+    return delete_by_id(applications, app_id)
