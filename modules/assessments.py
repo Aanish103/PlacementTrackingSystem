@@ -40,3 +40,11 @@ def update_assessment():
 
     if a.update(data) is None:
         print("Assessment updated successfully.")
+
+
+def delete_assessment():
+    aid = input("Assessment ID to delete: ")
+    if ds.delete_assessment(aid):
+        print("Assessment deleted.")
+    else:
+        print("assessment_id not found.")

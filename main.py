@@ -103,6 +103,8 @@ def assessments_menu():
         assessments.add_assessment()
     elif c == "2":
         assessments.update_assessment()
+    elif c == "3":
+        assessments.delete_assessment()
     elif c == "0":
         return
     else:
