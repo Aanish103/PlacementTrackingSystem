@@ -53,3 +53,11 @@ def update_application():
         print("Application updated successfully.")
     else:
         print("Update failed.")
+
+
+def delete_application():
+    aid = input("Enter application_id to delete: ")
+    if ds.delete_application(aid):
+        print("Application and related records deleted.")
+    else:
+        print("application_id not found.")
