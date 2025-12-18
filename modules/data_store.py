@@ -220,6 +220,14 @@ def update_student(student_id, data):
     return False
 
 
+def update_assessment(ass_id, data):
+    for a in assessments:
+        if a["assessment_id"] == ass_id:
+            a.update(data)
+            return True
+    return False
+
+
 #Delete
 def delete_staff(staff_id):
     return delete_by_id(placement_staffs, staff_id)

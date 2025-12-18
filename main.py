@@ -101,6 +101,8 @@ def assessments_menu():
     c = input("Sub choice: ").strip()
     if c == "1":
         assessments.add_assessment()
+    elif c == "2":
+        assessments.update_assessment()
     elif c == "0":
         return
     else:
