@@ -31,6 +31,8 @@ def main_menu():
             assessments_menu()
         elif choice == "6":
             applications.show_applications_by_student()
+        elif choice == "7":
+            students.filter_students_by_graduation_year()
         elif choice == "10":
             visits_menu()
         elif choice == "0":
