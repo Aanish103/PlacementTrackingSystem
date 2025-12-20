@@ -187,6 +187,19 @@ def add_assessment(app_id, assessor, score, comment):
     return aid
 
 
+def add_visit(application_id, visitor_name, visit_date, outcome, notes):
+    vid = _next_id(visits, "V")
+    visits.append({
+        "visit_id": vid,
+        "application_id": application_id,
+        "visitor_name": visitor_name,
+        "visit_date": visit_date,
+        "outcome": outcome,
+        "notes": notes
+    })
+    return vid
+
+
 #Update
 def update_school(school_id, data):
     for s in schools:
