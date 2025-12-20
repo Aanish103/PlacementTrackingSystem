@@ -267,3 +267,5 @@ def delete_application(app_id):
 def delete_assessment(ass_id):
     return delete_by_id(assessments, ass_id)
 
+def delete_visit(visit_id):
+    return delete_by_id(visits, visit_id)
