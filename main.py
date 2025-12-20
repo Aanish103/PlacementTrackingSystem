@@ -143,6 +143,8 @@ def decisions_menu():
         decisions.approve_application()
     elif c == "2":
         decisions.reject_application()
+    elif c == "3":
+        decisions.withdraw_application()
     elif c == "0":
         return
     else:
