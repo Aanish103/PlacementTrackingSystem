@@ -200,6 +200,17 @@ def add_visit(application_id, visitor_name, visit_date, outcome, notes):
     return vid
 
 
+def add_decision(app_id, d_type, by, comment, date):
+    decisions.append({
+        "application_id": app_id,
+        "decision_type": d_type,
+        "decision_by": by,
+        "decision_comment": comment,
+        "decision_date": date
+    })
+
+
+
 #Update
 def update_school(school_id, data):
     for s in schools:
