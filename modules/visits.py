@@ -47,3 +47,11 @@ def update_visit():
         print("Visit updated successfully.")
     else:
         print("Update failed.")
+
+def delete_visit():
+    vid = input("Enter Visit ID to delete: ").strip()
+
+    if ds.delete_visit(vid):
+        print("Visit deleted successfully.")
+    else:
+        print("Visit ID not found.")
