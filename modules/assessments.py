@@ -3,13 +3,13 @@ from modules import data_store as ds
 def add_assessment():
     application_id = input("Application ID: ")
     if not ds.get_by_id(ds.applications, application_id):
-        print("application_id not found.")
+        print("application_id not found. - assessments.py:6")
         return
     assessor = input("Assessor name: ")
     score = int(input("Score (0-100): "))
     comments = input("Comments: ")
     aid = ds.add_assessment(application_id, assessor, score, comments)
-    print(f"Assessment added. assessment_id: {aid}")
+    print(f"Assessment added. assessment_id: {aid} - assessments.py:12")
 
 
 def update_assessment():
@@ -17,7 +17,7 @@ def update_assessment():
 
     a = ds.get_by_id(ds.assessments, aid)
     if not a:
-        print("Assessment not found.")
+        print("Assessment not found. - assessments.py:20")
         return
 
     data = {}
@@ -31,7 +31,7 @@ def update_assessment():
         try:
             data["score"] = int(score)
         except ValueError:
-            print("Score must be a number.")
+            print("Score must be a number. - assessments.py:34")
             return
 
     comments = input(f"Comments [{a['comments']}]: ").strip()
@@ -39,12 +39,12 @@ def update_assessment():
         data["comments"] = comments
 
     if a.update(data) is None:
-        print("Assessment updated successfully.")
+        print("Assessment updated successfully. - assessments.py:42")
 
 
 def delete_assessment():
     aid = input("Assessment ID to delete: ")
     if ds.delete_assessment(aid):
-        print("Assessment deleted.")
+        print("Assessment deleted. - assessments.py:48")
     else:
-        print("assessment_id not found.")
+        print("assessment_id not found. - assessments.py:50")

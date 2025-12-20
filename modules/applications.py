@@ -61,3 +61,30 @@ def delete_application():
         print("Application and related records deleted.")
     else:
         print("application_id not found.")
+
+
+def show_applications_by_student():
+    student_id = input("Enter student_id: ").strip()
+
+    if not ds.get_by_id(ds.students, student_id):
+        print("student_id not found.")
+        return
+
+    found = False
+    print(f"\nApplications for Student ID: {student_id}")
+    print("" * 60)
+
+    for app in ds.applications:
+        if app["student_id"] == student_id:
+            found = True
+            print(f"Application ID : {app['application_id']}")
+            print(f"Employer       : {app['employer']}")
+            print(f"Role           : {app['role']}")
+            print(f"Start Date     : {app['start_date']}")
+            print(f"End Date       : {app['end_date']}")
+            print(f"Status         : {app['status']}")
+            print(f"Documents      : {', '.join(app['documents']) if app['documents'] else 'None'}")
+            print("" * 60)
+
+    if not found:
+        print("No applications found for this student.")

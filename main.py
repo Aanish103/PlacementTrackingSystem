@@ -3,7 +3,7 @@ from modules import data_store as ds
 
 def main_menu():
     while True:
-        print("\n=== Placement Tracking Tool - Console ===")
+        print("\n=== Placement Tracking Tool  Console ===")
         print("1  Placement Staffs")
         print("2  Schools")
         print("3  Students")
@@ -29,6 +29,8 @@ def main_menu():
             applications_menu()
         elif choice == "5":
             assessments_menu()
+        elif choice == "6":
+            applications.show_applications_by_student()
         elif choice == "10":
             visits_menu()
         elif choice == "0":
@@ -110,10 +112,10 @@ def assessments_menu():
     elif c == "0":
         return
     else:
-        print("Invalid.")
+        print("Invalid. - main.py:115")
 
 def visits_menu():
-    print("\nVisits: 1 Add | 2 Update | 3 Delete | 0 Back ")
+    print("\nVisits: 1 Add | 2 Update | 3 Delete | 0 Back")
     c = input("Sub choice: ").strip()
 
     if c == "1":
