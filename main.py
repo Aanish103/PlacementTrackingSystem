@@ -1,4 +1,4 @@
-from modules import placement_staffs, schools, students, applications, assessments
+from modules import placement_staffs, schools, students, applications, assessments, visits
 from modules import data_store as ds
 
 def main_menu():
@@ -29,6 +29,8 @@ def main_menu():
             applications_menu()
         elif choice == "5":
             assessments_menu()
+        elif choice == "10":
+            visits_menu()
         elif choice == "0":
             print("Exiting.")
             break
@@ -110,7 +112,16 @@ def assessments_menu():
     else:
         print("Invalid.")
 
+def visits_menu():
+    print("\nVisits: 1 Add | 2 Update | 3 Delete | 0 Back ")
+    c = input("Sub choice: ").strip()
 
+    if c == "1":
+        visits.add_visit()
+    elif c == "0":
+        return
+    else:
+        print("Invalid choice.")
 
 if __name__ == "__main__":
     main_menu()
