@@ -45,3 +45,32 @@ def delete_student():
         print("Student and related records deleted.")
     else:
         print("student_id not found.")
+
+
+def filter_students_by_graduation_year():
+    year = input("Enter Graduation Year (e.g. 2024): ").strip()
+
+    if not year.isdigit():
+        print("Invalid year. Please enter a numeric year.")
+        return
+
+    year = int(year)
+    found = False
+
+    print(f"\nStudents graduating in {year}")
+    print("-" * 70)
+
+    for student in ds.students:
+        if student["grad_year"] == year:
+            found = True
+            print(f"Student ID     : {student['student_id']}")
+            print(f"Name           : {student['name']}")
+            print(f"DOB            : {student['dob']}")
+            print(f"Address        : {student['address']}")
+            print(f"Qualification  : {student['qualification']}")
+            print(f"School ID      : {student['school_id']}")
+            print(f"Staff ID       : {student['staff_id']}")
+            print("-" * 70)
+
+    if not found:
+        print("No students found for this graduation year.")
