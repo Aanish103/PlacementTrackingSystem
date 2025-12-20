@@ -33,6 +33,8 @@ def main_menu():
             applications.show_applications_by_student()
         elif choice == "7":
             students.filter_students_by_graduation_year()
+        elif choice == "8":
+            students.filter_students_by_school()
         elif choice == "10":
             visits_menu()
         elif choice == "0":
