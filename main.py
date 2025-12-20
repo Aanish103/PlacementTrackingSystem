@@ -141,6 +141,8 @@ def decisions_menu():
     c = input("Sub choice: ").strip()
     if c == "1":
         decisions.approve_application()
+    elif c == "2":
+        decisions.reject_application()
     elif c == "0":
         return
     else:
