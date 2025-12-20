@@ -241,6 +241,14 @@ def update_assessment(ass_id, data):
     return False
 
 
+def update_visit(visit_id, data):
+    for v in visits:
+        if v["visit_id"] == visit_id:
+            v.update(data)
+            return True
+    return False
+
+
 #Delete
 def delete_staff(staff_id):
     return delete_by_id(placement_staffs, staff_id)
@@ -258,3 +266,4 @@ def delete_application(app_id):
 
 def delete_assessment(ass_id):
     return delete_by_id(assessments, ass_id)
+

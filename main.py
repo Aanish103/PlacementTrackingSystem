@@ -118,6 +118,8 @@ def visits_menu():
 
     if c == "1":
         visits.add_visit()
+    elif c == "2":
+        visits.update_visit()
     elif c == "0":
         return
     else:
