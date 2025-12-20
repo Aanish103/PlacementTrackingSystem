@@ -74,3 +74,38 @@ def filter_students_by_graduation_year():
 
     if not found:
         print("No students found for this graduation year.")
+
+
+def filter_students_by_school():
+    school_id = input("Enter School ID (e.g. SC001): ").strip()
+
+    school = ds.get_by_id(ds.schools, school_id)
+    if not school:
+        print("school_id not found. - students.py")
+        return
+
+    print(f"\nSchool Details")
+    print("-" * 70)
+    print(f"School ID      : {school['school_id']}")
+    print(f"School Name    : {school['school_name']}")
+    print(f"Location       : {school['location']}")
+    print("-" * 70)
+
+    found = False
+    print(f"\nStudents enrolled in this school")
+    print("-" * 70)
+
+    for student in ds.students:
+        if student["school_id"] == school_id:
+            found = True
+            print(f"Student ID     : {student['student_id']}")
+            print(f"Name           : {student['name']}")
+            print(f"DOB            : {student['dob']}")
+            print(f"Address        : {student['address']}")
+            print(f"Qualification  : {student['qualification']}")
+            print(f"Graduation Year: {student['grad_year']}")
+            print(f"Staff ID       : {student['staff_id']}")
+            print("-" * 70)
+
+    if not found:
+        print("No students found for this school.")
