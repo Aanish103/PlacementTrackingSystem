@@ -280,3 +280,11 @@ def delete_assessment(ass_id):
 
 def delete_visit(visit_id):
     return delete_by_id(visits, visit_id)
+
+
+
+
+#Show All List
+
+def list_assessments():
+    return assessments

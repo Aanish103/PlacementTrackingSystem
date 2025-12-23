@@ -115,6 +115,8 @@ def assessments_menu():
         assessments.update_assessment()
     elif c == "3":
         assessments.delete_assessment()
+    elif c == "4":
+        assessments.show_all_assessments()
     elif c == "0":
         return
     else:
