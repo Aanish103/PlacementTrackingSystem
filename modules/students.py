@@ -47,6 +47,15 @@ def delete_student():
         print("student_id not found.")
 
 
+def find_student_by_id():
+    sid = input("Enter student_id: ")
+    s = ds.get_student(sid)
+    if s:
+        print(s)
+    else:
+        print("student_id not found.")
+
+
 def filter_students_by_graduation_year():
     year = input("Enter Graduation Year (e.g. 2024): ").strip()
 
