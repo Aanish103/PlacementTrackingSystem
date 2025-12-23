@@ -48,3 +48,8 @@ def delete_assessment():
         print("Assessment deleted. - assessments.py:48")
     else:
         print("assessment_id not found. - assessments.py:50")
+
+
+def show_all_assessments():
+    for a in ds.list_assessments():
+        print(a)
