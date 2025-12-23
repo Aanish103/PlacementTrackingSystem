@@ -288,3 +288,12 @@ def delete_visit(visit_id):
 
 def list_assessments():
     return assessments
+
+
+#find
+
+def get_student(student_id):
+    for s in students:
+        if s["student_id"] == student_id:
+            return s
+    return None

@@ -85,6 +85,8 @@ def students_menu():
         students.update_student()
     elif c == "3":
         students.delete_student()
+    elif c == "5":
+        students.find_student_by_id()
     elif c == "0":
         return
     else:
