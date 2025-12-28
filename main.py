@@ -72,6 +72,8 @@ def schools_menu():
         schools.update_school()
     elif c == "3":
         schools.delete_school()
+    elif c == "4":
+        schools.show_all_schools()
     elif c == "0":
         return
     else:
@@ -135,7 +137,7 @@ def assessments_menu():
         print("Invalid. - main.py:115")
 
 def visits_menu():
-    print("\nVisits: 1 Add | 2 Update | 3 Delete | 0 Back")
+    print("\nVisits: 1 Add | 2 Update | 3 Delete | 4 Show All | 0 Back")
     c = input("Sub choice: ").strip()
 
     if c == "1":

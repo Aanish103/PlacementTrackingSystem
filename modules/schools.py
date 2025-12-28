@@ -29,3 +29,17 @@ def delete_school():
         print("School deleted.")
     else:
         print("school_id not found.")
+
+def show_all_schools():
+    if not ds.schools:
+        print("No schools available.")
+        return
+
+    print("\nALL SCHOOLS")
+    print("=" * 60)
+
+    for school in ds.schools:
+        print(f"School ID   : {school['school_id']}")
+        print(f"School Name : {school['school_name']}")
+        print(f"Location    : {school['location']}")
+        print("-" * 60)
