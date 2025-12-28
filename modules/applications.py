@@ -112,3 +112,28 @@ def show_all_applications():
         print(f"Status         : {app['status']}")
         print(f"Documents      : {', '.join(app['documents']) if app['documents'] else 'None'}")
         print("-" * 80)
+
+def find_application_by_id():
+    app_id = input("Enter application_id (e.g. AP001): ").strip()
+
+    app = ds.get_by_id(ds.applications, app_id)
+    if not app:
+        print("application_id not found. - applications.py")
+        return
+
+    student = ds.get_by_id(ds.students, app["student_id"])
+    school = ds.get_by_id(ds.schools, student["school_id"]) if student else None
+
+    print("\nApplication Details")
+    print("=" * 80)
+    print(f"Application ID : {app['application_id']}")
+    print(f"Student ID     : {app['student_id']}")
+    print(f"Student Name   : {student['name'] if student else 'N/A'}")
+    print(f"School         : {school['school_name'] if school else 'N/A'}")
+    print(f"Employer       : {app['employer']}")
+    print(f"Role           : {app['role']}")
+    print(f"Start Date     : {app['start_date']}")
+    print(f"End Date       : {app['end_date']}")
+    print(f"Status         : {app['status']}")
+    print(f"Documents      : {', '.join(app['documents']) if app['documents'] else 'None'}")
+    print("=" * 80)

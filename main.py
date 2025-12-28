@@ -106,6 +106,8 @@ def applications_menu():
         applications.delete_application()
     elif c == "4":
         applications.show_all_applications()
+    elif c == "5":
+        applications.find_application_by_id()
     elif c == "0":
         return
     else:
