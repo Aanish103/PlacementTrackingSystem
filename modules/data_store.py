@@ -300,3 +300,9 @@ def get_student(student_id):
         if s["student_id"] == student_id:
             return s
     return None
+
+def get_assessments_by_application(application_id):
+    return [
+        a for a in assessments
+        if a["application_id"] == application_id
+    ]
