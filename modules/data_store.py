@@ -290,6 +290,9 @@ def list_assessments():
     return assessments
 
 
+def list_staffs():
+    return placement_staffs
+
 #find
 
 def get_student(student_id):
