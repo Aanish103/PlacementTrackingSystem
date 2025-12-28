@@ -37,3 +37,8 @@ def delete_placement_staff():
         print("Staff deleted.")
     else:
         print("staff_id not found.")
+
+
+def show_all_placement_staffs():
+    for s in ds.list_staffs():
+        print(s)

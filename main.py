@@ -55,6 +55,8 @@ def placement_staffs_menu():
         placement_staffs.update_placement_staff()
     elif c == "3":
         placement_staffs.delete_placement_staff()
+    elif c == "4":
+        placement_staffs.show_all_placement_staffs()
     elif c == "0":
         return
     else:
