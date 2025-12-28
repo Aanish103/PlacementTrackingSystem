@@ -53,3 +53,13 @@ def delete_assessment():
 def show_all_assessments():
     for a in ds.list_assessments():
         print(a)
+
+
+def search_assessments_by_application():
+    aid = input("Application ID: ")
+    res = ds.get_assessments_by_application(aid)
+    if not res:
+        print("No assessments for this application.")
+    else:
+        for r in res:
+            print(r)
