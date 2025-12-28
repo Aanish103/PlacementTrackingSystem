@@ -88,3 +88,27 @@ def show_applications_by_student():
 
     if not found:
         print("No applications found for this student.")
+
+def show_all_applications():
+    if not ds.applications:
+        print("No applications available.")
+        return
+
+    print("\nAll Applications")
+    print("=" * 80)
+
+    for app in ds.applications:
+        student = ds.get_by_id(ds.students, app["student_id"])
+        school = ds.get_by_id(ds.schools, student["school_id"]) if student else None
+
+        print(f"Application ID : {app['application_id']}")
+        print(f"Student ID     : {app['student_id']}")
+        print(f"Student Name   : {student['name'] if student else 'N/A'}")
+        print(f"School         : {school['school_name'] if school else 'N/A'}")
+        print(f"Employer       : {app['employer']}")
+        print(f"Role           : {app['role']}")
+        print(f"Start Date     : {app['start_date']}")
+        print(f"End Date       : {app['end_date']}")
+        print(f"Status         : {app['status']}")
+        print(f"Documents      : {', '.join(app['documents']) if app['documents'] else 'None'}")
+        print("-" * 80)

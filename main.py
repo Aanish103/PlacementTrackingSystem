@@ -96,7 +96,7 @@ def students_menu():
 
 
 def applications_menu():
-    print("\nApplication: 1 Add | 2 Update | 3 Delete | 4 Show All | 5 Find by ID | 6 Show Full Details | 0 Back")
+    print("\nApplication: 1 Add | 2 Update | 3 Delete | 4 Show All Applications | 5 Find by ID | 6 Show Full Details | 0 Back")
     c = input("Sub choice: ").strip()
     if c == "1":
         applications.add_application()
@@ -104,6 +104,8 @@ def applications_menu():
         applications.update_application()
     elif c == "3":
         applications.delete_application()
+    elif c == "4":
+        applications.show_all_applications()
     elif c == "0":
         return
     else:
