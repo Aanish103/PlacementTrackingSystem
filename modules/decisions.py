@@ -54,3 +54,23 @@ def withdraw_application():
     )
 
     print("Application withdrawn successfully")
+
+def show_all_decisions():
+    if not ds.decisions:
+        print("No decisions available.")
+        return
+
+    print("\nALL DECISIONS")
+    print("=" * 80)
+
+    for d in ds.decisions:
+        app = ds.get_by_id(ds.applications, d["application_id"])
+        student = ds.get_by_id(ds.students, app["student_id"]) if app else None
+
+        print(f"Application ID : {d['application_id']}")
+        print(f"Student Name  : {student['name'] if student else 'N/A'}")
+        print(f"Decision Type : {d['decision_type']}")
+        print(f"Decision By   : {d['decision_by']}")
+        print(f"Comment       : {d['decision_comment']}")
+        print(f"Decision Date : {d['decision_date']}")
+        print("-" * 80)
