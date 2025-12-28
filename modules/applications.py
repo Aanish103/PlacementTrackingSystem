@@ -137,3 +137,88 @@ def find_application_by_id():
     print(f"Status         : {app['status']}")
     print(f"Documents      : {', '.join(app['documents']) if app['documents'] else 'None'}")
     print("=" * 80)
+
+def show_full_application_details():
+    aid = input("Enter application_id: ").strip()
+
+    app = ds.get_by_id(ds.applications, aid)
+    if not app:
+        print("application_id not found. - applications.py")
+        return
+
+    student = ds.get_by_id(ds.students, app["student_id"])
+    school = ds.get_by_id(ds.schools, student["school_id"]) if student else None
+
+    print("\nAPPLICATION DETAILS")
+    print("=" * 80)
+    print(f"Application ID : {app['application_id']}")
+    print(f"Employer       : {app['employer']}")
+    print(f"Role           : {app['role']}")
+    print(f"Start Date     : {app['start_date']}")
+    print(f"End Date       : {app['end_date']}")
+    print(f"Status         : {app['status']}")
+    print(f"Documents      : {', '.join(app['documents']) if app['documents'] else 'None'}")
+
+    if student:
+        print("\nSTUDENT DETAILS")
+        print("-" * 80)
+        print(f"Student ID     : {student['student_id']}")
+        print(f"Name           : {student['name']}")
+        print(f"DOB            : {student['dob']}")
+        print(f"Address        : {student['address']}")
+        print(f"Qualification  : {student['qualification']}")
+        print(f"Graduation Year: {student['grad_year']}")
+
+    if school:
+        print("\nSCHOOL DETAILS")
+        print("-" * 80)
+        print(f"School Name    : {school['school_name']}")
+        print(f"Location       : {school['location']}")
+
+    print("\nASSESSMENTS")
+    print("-" * 80)
+    found = False
+    for ass in ds.assessments:
+        if ass["application_id"] == aid:
+            found = True
+            print(f"Assessment ID  : {ass['assessment_id']}")
+            print(f"Assessor Name : {ass['assessor_name']}")
+            print(f"Score          : {ass['score']}")
+            print(f"Comments       : {ass['comments']}")
+            print("-" * 80)
+
+    if not found:
+        print("No assessments found for this application.")
+
+    print("\nVISITS")
+    print("-" * 80)
+    found = False
+    for v in ds.visits:
+        if v["application_id"] == aid:
+            found = True
+            print(f"Visit ID       : {v['visit_id']}")
+            print(f"Visitor Name  : {v['visitor_name']}")
+            print(f"Visit Date    : {v['visit_date']}")
+            print(f"Outcome       : {v['outcome']}")
+            print(f"Notes         : {v['notes']}")
+            print("-" * 80)
+
+    if not found:
+        print("No visits found for this application.")
+
+    print("\nDECISIONS")
+    print("-" * 80)
+    decision_found = False
+    for d in ds.decisions:
+        if d["application_id"] == aid:
+            decision_found = True
+            print(f"Decision Type : {d['decision_type']}")
+            print(f"Decision By   : {d['decision_by']}")
+            print(f"Comment       : {d['decision_comment']}")
+            print(f"Decision Date : {d['decision_date']}")
+            print("-" * 80)
+
+    if not decision_found:
+        print("No decisions recorded for this application.")
+
+    print("=" * 80)

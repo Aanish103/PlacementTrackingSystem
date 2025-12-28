@@ -108,6 +108,8 @@ def applications_menu():
         applications.show_all_applications()
     elif c == "5":
         applications.find_application_by_id()
+    elif c == "6":
+        applications.show_full_application_details()
     elif c == "0":
         return
     else:
