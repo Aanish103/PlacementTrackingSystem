@@ -166,5 +166,22 @@ def decisions_menu():
     else:
         print("Invalid.")
 
+def visits_menu():
+    print("\nVisits: 1 Add | 2 Update | 3 Delete | 4 Show All | 0 Back")
+    c = input("Sub choice: ").strip()
+
+    if c == "1":
+        visits.add_visit()
+    elif c == "2":
+        visits.update_visit()
+    elif c == "3":
+        visits.delete_visit()
+    elif c == "4":
+        visits.show_all_visits()
+    elif c == "0":
+        return
+    else:
+        print("Invalid choice.")
+
 if __name__ == "__main__":
     main_menu()
