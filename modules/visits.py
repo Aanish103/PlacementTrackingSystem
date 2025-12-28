@@ -55,3 +55,24 @@ def delete_visit():
         print("Visit deleted successfully.")
     else:
         print("Visit ID not found.")
+
+def show_all_visits():
+    if not ds.visits:
+        print("No visits available.")
+        return
+
+    print("\nALL VISITS")
+    print("=" * 80)
+
+    for visit in ds.visits:
+        app = ds.get_by_id(ds.applications, visit["application_id"])
+        student = ds.get_by_id(ds.students, app["student_id"]) if app else None
+
+        print(f"Visit ID        : {visit['visit_id']}")
+        print(f"Application ID  : {visit['application_id']}")
+        print(f"Student Name   : {student['name'] if student else 'N/A'}")
+        print(f"Visitor Name   : {visit['visitor_name']}")
+        print(f"Visit Date     : {visit['visit_date']}")
+        print(f"Outcome        : {visit['outcome']}")
+        print(f"Notes          : {visit['notes']}")
+        print("-" * 80)
