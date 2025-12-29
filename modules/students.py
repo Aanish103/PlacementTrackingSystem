@@ -56,6 +56,22 @@ def find_student_by_id():
         print("student_id not found.")
 
 
+def show_full_details_for_student():
+    sid = input("Enter student_id: ")
+    details = ds.get_full_details_student(sid)
+    if not details:
+        print("student_id not found.")
+        return
+    print("STUDENT:")
+    print(details)
+    for ap in details["applications"]:
+        print("---")
+        print("Application:", ap["application"])
+        print("Decisions:", ap["decisions"])
+        print("Assessments:", ap["assessments"])
+        print("Visits:", ap["visits"])
+
+
 def filter_students_by_graduation_year():
     year = input("Enter Graduation Year (e.g. 2024): ").strip()
 

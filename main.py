@@ -91,6 +91,8 @@ def students_menu():
         students.delete_student()
     elif c == "5":
         students.find_student_by_id()
+    elif c == "6":
+        students.show_full_details_for_student()
     elif c == "0":
         return
     else:
