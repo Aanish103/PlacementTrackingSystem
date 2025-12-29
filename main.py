@@ -38,7 +38,7 @@ def main_menu():
         elif choice == "10":
             visits_menu()
         elif choice == "11":
-            decisions.show_all_decisions()
+            decisions_menu()
         elif choice == "0":
             print("Exiting.")
             break
