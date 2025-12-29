@@ -306,3 +306,30 @@ def get_assessments_by_application(application_id):
         a for a in assessments
         if a["application_id"] == application_id
     ]
+
+
+def get_full_details_student(student_id):
+    student = get_student(student_id)
+    if not student:
+        return None
+
+    school = get_by_id(schools, student["school_id"])
+    staff = get_by_id(placement_staffs, student["staff_id"])
+
+    results = []
+
+    for app in applications:
+        if app["student_id"] == student_id:
+            results.append({
+                "application": app,
+                "assessments": [a for a in assessments if a["application_id"] == app["application_id"]],
+                "visits": [v for v in visits if v["application_id"] == app["application_id"]],
+                "decisions": [d for d in decisions if d["application_id"] == app["application_id"]]
+            })
+
+    return {
+        **student,
+        "school": school,
+        "staff": staff,
+        "applications": results
+    }
