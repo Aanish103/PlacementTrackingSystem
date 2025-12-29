@@ -161,6 +161,8 @@ def decisions_menu():
         decisions.reject_application()
     elif c == "3":
         decisions.withdraw_application()
+    elif c == "4":
+        decisions.show_all_decisions()
     elif c == "0":
         return
     else:
