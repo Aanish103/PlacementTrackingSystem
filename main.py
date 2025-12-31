@@ -35,6 +35,8 @@ def main_menu():
             students.filter_students_by_graduation_year()
         elif choice == "8":
             students.filter_students_by_school()
+        elif choice == "9":
+            show_all_details()
         elif choice == "10":
             visits_menu()
         elif choice == "11":
@@ -186,6 +188,50 @@ def visits_menu():
         return
     else:
         print("Invalid choice.")
+
+
+
+
+def show_all_details():
+    ds_all = ds.show_all_details()
+
+    print("\n--- Placement Staffs ---")
+    for p in ds_all["placement_staffs"]:
+        print(p)
+
+    print("\n--- Schools ---")
+    for s in ds_all["schools"]:
+        print(s)
+
+    print("\n--- Students ---")
+    for st in ds_all["students"]:
+        print(st)
+
+    print("\n--- Applications ---")
+    for ap in ds_all["applications"]:
+        print(ap)
+        aid = ap["application_id"]
+        print("  Decisions:",
+              [d for d in ds_all["decisions"] if d["application_id"] == aid])
+
+        print("  Assessments:",
+              [a for a in ds_all["assessments"] if a["application_id"] == aid])
+
+        print("  Visits:",
+              [v for v in ds_all["visits"] if v["application_id"] == aid])
+
+
+    print("\n--- Assessments ---")
+    for a in ds_all["assessments"]:
+        print(a)
+
+    print("\n--- Visits ---")
+    for v in ds_all["visits"]:
+        print(v)
+
+    print("\n--- Decisions ---")
+    for d in ds_all["decisions"]:
+        print(d)
 
 if __name__ == "__main__":
     main_menu()

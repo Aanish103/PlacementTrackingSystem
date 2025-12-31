@@ -333,3 +333,17 @@ def get_full_details_student(student_id):
         "staff": staff,
         "applications": results
     }
+
+
+
+
+def show_all_details():
+    return {
+        "placement_staffs": placement_staffs,
+        "schools": schools,
+        "students": students,
+        "applications": applications,
+        "assessments": assessments,
+        "visits": visits,
+        "decisions": decisions
+    }
