@@ -20,7 +20,7 @@ class TestEquivalencePartition(unittest.TestCase):
         data_store.assessments.clear()
         data_store.assessments.extend(self.original_assessments)
 
-# Add Application
+# Update Application
     def test_add_application_valid(self):
         aid = data_store.add_application(
             "ST001", "Google", "Intern",
