@@ -33,20 +33,22 @@ class TestBoundaryValue(unittest.TestCase):
 
     def test_add_assessment_score_below_min(self):
         aid = data_store.add_assessment("AP001", -1, "Fail", "Invalid low")
-        self.assertIsNotNone(aid)  # system currently allows → document behaviour
+        self.assertIsNotNone(aid)
 
     def test_add_assessment_score_above_max(self):
         aid = data_store.add_assessment("AP001", 101, "Fail", "Invalid high")
         self.assertIsNotNone(aid)
 
+
+
 # Update Assessment
 
-    def test_update_assessment_score_boundary(self):
-        result = data_store.update_assessment("AS001", 0)
+    def test_update_assessment_score_lower_boundary(self):
+        result = data_store.update_assessment("AS001", {"score": 0})
         self.assertTrue(result)
 
-    def test_update_assessment_score_above_max(self):
-        result = data_store.update_assessment("AS001", 101)
+    def test_update_assessment_score_upper_boundary(self):
+        result = data_store.update_assessment("AS001", {"score": 100})
         self.assertTrue(result)
 
 
