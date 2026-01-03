@@ -12,9 +12,6 @@ sys.path.insert(0, PROJECT_ROOT)
 from modules import placement_staffs, visits
 
 
-# ==================================================
-# UPDATE PLACEMENT STAFF – CONCOLIC TESTING
-# ==================================================
 class TestUpdatePlacementStaff_Concolic(unittest.TestCase):
 
     @patch(
@@ -69,9 +66,6 @@ class TestUpdatePlacementStaff_Concolic(unittest.TestCase):
         self.assertEqual(staff["name"], "Old Manager")
 
 
-# ==================================================
-# UPDATE VISIT – CONCOLIC TESTING
-# ==================================================
 class TestUpdateVisit_Concolic(unittest.TestCase):
 
     @patch(
