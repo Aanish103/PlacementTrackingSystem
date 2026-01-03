@@ -3,7 +3,7 @@ import os
 import unittest
 from unittest.mock import patch
 
-# 🔒 Robust project root detection
+
 CURRENT_DIR = os.path.dirname(__file__)
 while CURRENT_DIR != os.path.dirname(CURRENT_DIR):
     if os.path.isdir(os.path.join(CURRENT_DIR, "modules")):
@@ -16,9 +16,6 @@ else:
 from modules import students, schools
 
 
-# ===============================
-# Helper class to count loop iterations
-# ===============================
 class CountingList(list):
     def __init__(self, *args):
         super().__init__(*args)
@@ -30,9 +27,6 @@ class CountingList(list):
             yield item
 
 
-# ===============================
-# filter_students_by_graduation_year – Loop Testing
-# ===============================
 class TestFilterStudentsByYearLoop(unittest.TestCase):
 
     @patch("builtins.input", return_value="2024")
@@ -89,9 +83,6 @@ class TestFilterStudentsByYearLoop(unittest.TestCase):
         print(f"[Loop Count] filter_students_by_graduation_year → {students_list.iteration_count}")
 
 
-# ===============================
-# filter_students_by_school – Loop Testing
-# ===============================
 class TestFilterStudentsBySchoolLoop(unittest.TestCase):
 
     @patch("modules.students.ds.get_by_id", return_value={
@@ -163,9 +154,6 @@ class TestFilterStudentsBySchoolLoop(unittest.TestCase):
         print(f"[Loop Count] filter_students_by_school → {students_list.iteration_count}")
 
 
-# ===============================
-# show_all_schools – Loop Testing
-# ===============================
 class TestShowAllSchoolsLoop(unittest.TestCase):
 
     def test_zero_schools(self):
