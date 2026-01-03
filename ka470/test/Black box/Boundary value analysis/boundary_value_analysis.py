@@ -3,117 +3,101 @@ import os
 import unittest
 from unittest.mock import patch
 
+# Project root (same style as your friend)
 PROJECT_ROOT = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "../../../..")
 )
 sys.path.insert(0, PROJECT_ROOT)
 
-from modules import placement_staffs
-from modules import visits
-from modules import applications  # <- this is where find_application_by_id() is actually defined
+from modules import students, applications
 
 
-class TestFindApplication_BVA(unittest.TestCase):
+# add_student
+class TestAddStudentEP(unittest.TestCase):
 
-    @patch("modules.applications.ds.get_by_id")
+    @patch("modules.students.ds.add_student", return_value="STU001")
     @patch("builtins.input")
-    def test_empty_application_id(self, mock_input, mock_get):
-        """Boundary: Empty input"""
-        mock_input.return_value = ""
-        mock_get.return_value = None
+    def test_add_student_valid_partition(self, mock_input, mock_add):
+        mock_input.side_effect = [
+            "Apurva", "15/10/1997", "UK",
+            "BSc", "2024", "SC001", "ST001"
+        ]
+        students.add_student()
+        mock_add.assert_called_once()
 
-        applications.find_application_by_id()
-        mock_get.assert_called_once()
 
-    @patch("modules.applications.ds.get_by_id")
+# update_student
+class TestUpdateStudentEP(unittest.TestCase):
+
+    @patch("modules.students.ds.get_by_id")
+    @patch("modules.students.ds.update_student", return_value=True)
     @patch("builtins.input")
-    def test_min_valid_application_id(self, mock_input, mock_get):
-        """Boundary: Minimum valid ID"""
-        mock_input.return_value = "AP001"
+    def test_update_student_valid_id(self, mock_input, mock_update, mock_get):
 
-        mock_get.side_effect = [
-            {
-                "application_id": "AP001",
-                "student_id": "S1",
-                "employer": "ABC",
-                "role": "Intern",
-                "start_date": "01/01/2025",
-                "end_date": "01/06/2025",
-                "status": "Approved",
-                "documents": []
-            },
-            None,
-            None
+        # 8 inputs (student_id + 7 fields)
+        mock_input.side_effect = [
+            "STU001",  # student_id
+            "",        # name
+            "",        # dob
+            "",        # address
+            "",        # qualification
+            "",        # grad_year
+            "",        # school_id
+            ""         # staff_id
         ]
 
-        applications.find_application_by_id()
+        mock_get.return_value = {
+            "name": "A",
+            "dob": "1",
+            "address": "X",
+            "qualification": "B",
+            "grad_year": 2024,
+            "school_id": "SC1",
+            "staff_id": "ST1"
+        }
 
-    @patch("modules.applications.ds.get_by_id")
-    @patch("builtins.input")
-    def test_invalid_application_id(self, mock_input, mock_get):
-        """Boundary: Invalid ID"""
-        mock_input.return_value = "AP999"
-        mock_get.return_value = None
-
-        applications.find_application_by_id()
+        students.update_student()
+        mock_update.assert_called_once()
 
 
-class TestDeletePlacementStaff_BVA(unittest.TestCase):
+# delete_student
+class TestDeleteStudentEP(unittest.TestCase):
 
-    @patch("modules.placement_staffs.ds.delete_staff", return_value=False)
-    @patch("builtins.input")
-    def test_empty_staff_id(self, mock_input, mock_delete):
-        """Boundary: Empty staff_id"""
-        mock_input.return_value = ""
-
-        placement_staffs.delete_placement_staff()
+    @patch("modules.students.ds.delete_student", return_value=True)
+    @patch("builtins.input", return_value="STU001")
+    def test_delete_student_valid_id(self, mock_input, mock_delete):
+        students.delete_student()
         mock_delete.assert_called_once()
 
-    @patch("modules.placement_staffs.ds.delete_staff", return_value=True)
-    @patch("builtins.input")
-    def test_valid_staff_id(self, mock_input, mock_delete):
-        """Boundary: Minimum valid staff_id"""
-        mock_input.return_value = "ST001"
 
-        placement_staffs.delete_placement_staff()
-        mock_delete.assert_called_once()
+# filter_students_by_school
+class TestFilterStudentsBySchoolEP(unittest.TestCase):
 
-    @patch("modules.placement_staffs.ds.delete_staff", return_value=False)
-    @patch("builtins.input")
-    def test_invalid_staff_id(self, mock_input, mock_delete):
-        """Boundary: Invalid staff_id"""
-        mock_input.return_value = "ST999"
-
-        placement_staffs.delete_placement_staff()
+    @patch("modules.students.ds.get_by_id", return_value={
+        "school_id": "SC001",
+        "school_name": "Test School",
+        "location": "UK"
+    })
+    @patch("builtins.input", return_value="SC001")
+    def test_filter_students_valid_school(self, mock_input, mock_get):
+        students.filter_students_by_school()
 
 
-class TestDeleteVisit_BVA(unittest.TestCase):
+# show_applications_by_student
+class TestShowApplicationsByStudentEP(unittest.TestCase):
 
-    @patch("modules.visits.ds.delete_visit", return_value=False)
-    @patch("builtins.input")
-    def test_empty_visit_id(self, mock_input, mock_delete):
-        """Boundary: Empty visit_id"""
-        mock_input.return_value = ""
+    @patch("modules.students.ds.get_by_id", return_value={"student_id": "STU001"})
+    @patch("builtins.input", return_value="STU001")
+    def test_show_applications_valid_student(self, mock_input, mock_get):
+        applications.show_applications_by_student()
 
-        visits.delete_visit()
-        mock_delete.assert_called_once()
 
-    @patch("modules.visits.ds.delete_visit", return_value=True)
-    @patch("builtins.input")
-    def test_valid_visit_id(self, mock_input, mock_delete):
-        """Boundary: Minimum valid visit_id"""
-        mock_input.return_value = "V001"
+# filter_students_by_graduation_year
+class TestFilterStudentsByYearEP(unittest.TestCase):
 
-        visits.delete_visit()
-        mock_delete.assert_called_once()
-
-    @patch("modules.visits.ds.delete_visit", return_value=False)
-    @patch("builtins.input")
-    def test_invalid_visit_id(self, mock_input, mock_delete):
-        """Boundary: Invalid visit_id"""
-        mock_input.return_value = "V999"
-
-        visits.delete_visit()
+    @patch("builtins.input", return_value="2024")
+    def test_filter_students_valid_year(self, mock_input):
+        students.filter_students_by_graduation_year()
 
 
 if __name__ == "__main__":
