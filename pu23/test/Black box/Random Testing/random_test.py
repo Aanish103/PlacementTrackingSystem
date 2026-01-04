@@ -1,11 +1,10 @@
 import unittest
 import sys
 import os
-import random   # ✅ FIX ADDED
+import random
 
-# ---------------------------------------------------
-# ADD pu23 FOLDER TO PYTHON PATH
-# ---------------------------------------------------
+
+
 CURRENT_DIR = os.path.dirname(__file__)
 PU23_ROOT = os.path.abspath(os.path.join(CURRENT_DIR, "../../../.."))
 sys.path.insert(0, PU23_ROOT)
@@ -28,9 +27,9 @@ class TestRandomTesting(unittest.TestCase):
             data_store.applications.clear()
             data_store.applications.extend(self.application_backup)
 
-    # ==================================================
+
     # RANDOM TESTING – SCHOOL
-    # ==================================================
+
     def test_random_school_operations(self):
         school_id = f"SC{random.randint(100, 999)}"
         school_data = {
@@ -49,9 +48,9 @@ class TestRandomTesting(unittest.TestCase):
 
         self.assertTrue(True)
 
-    # ==================================================
+
     # RANDOM TESTING – APPLICATION
-    # ==================================================
+
     def test_random_application_operations(self):
         app_id = f"AP{random.randint(100, 999)}"
 
@@ -68,9 +67,9 @@ class TestRandomTesting(unittest.TestCase):
 
         self.assertTrue(True)
 
-    # ==================================================
+
     # RANDOM TESTING – VIEW
-    # ==================================================
+
     def test_random_view_functions(self):
         views = [
             "show_all_details",
