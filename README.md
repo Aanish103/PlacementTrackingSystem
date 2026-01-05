@@ -43,21 +43,21 @@ Inorder to run the development:
 
 
 Steps to run All the Test Cases related to Aanish:
-Open Local Terminal and Enter:
+* Open Local Terminal and Enter:
 ./run_aanish_tests.sh                                                                  
 
 Steps to run All the Test Cases related to Apurva:
-Open Bash Terminal and Enter:
+* Open Bash Terminal and Enter:
 chmod +x run_apurva_test.sh
 bash run_apurva_test.sh
 
 Steps to run All the Test Cases related to Putusoththaman:
-Open Bash Terminal and Enter:
+* Open Bash Terminal and Enter:
 chmod +x run_pu23_test.sh
 bash run_pu23_tests.sh
 
 Steps to run All the Test Cases related to Keerthi:
-Open Bash Terminal and Enter:
+* Open Bash Terminal and Enter:
 chmod +x run_ka470_test.sh
 bash run_ka470_tests.sh
 
